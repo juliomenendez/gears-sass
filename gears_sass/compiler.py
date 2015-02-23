@@ -1,12 +1,13 @@
 import os
+import sys
 
 from gears.compilers import ExecCompiler
 
 
 class SASSCompiler(ExecCompiler):
     result_mimetype = 'text/css'
-    executable = 'node'
-    params = [os.path.join(os.path.dirname(__file__), 'compiler.js')]
+    executable = 'sass'
+    params = ['--scss']
 
     def __init__(self, *args, **kwargs):
         self.paths = []
@@ -21,6 +22,6 @@ class SASSCompiler(ExecCompiler):
 
     def get_args(self):
         args = super(SASSCompiler, self).get_args()
-        args.append(os.path.dirname(self.asset.absolute_path))
-        args.extend(self.asset.attributes.environment.paths)
+        args.extend(map(lambda x: '-I' + x, self.asset.attributes.environment.paths))
+        args.append('-I' + os.path.dirname(self.asset.absolute_path))
         return args
