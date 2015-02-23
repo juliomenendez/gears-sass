@@ -1,0 +1,11 @@
+.test-syntax {
+  background: red;
+  border: {
+    top: 1px solid #000;
+    left: 2px dashed #000;
+  }
+
+  .test-syntax_in {
+    outline: 1px solid #fff;
+  }
+}

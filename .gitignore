@@ -3,3 +3,6 @@
 build
 dist
 *egg-info*
+.sass-cache/
+!example/static/.gitkeep
+example/static/*

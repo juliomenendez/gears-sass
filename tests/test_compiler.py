@@ -2,14 +2,16 @@
 
 import os
 import unittest
+import sys
 
 from gears.environment import Environment
 from gears.finders import FileSystemFinder
 
+ROOT_DIR = os.path.abspath(os.path.dirname(__file__))
+sys.path.insert(0, os.path.abspath(os.path.join(ROOT_DIR, '..')))
+
 from gears_sass import SASSCompiler
 
-
-ROOT_DIR = os.path.abspath(os.path.dirname(__file__))
 SCSS_DIR = os.path.join(ROOT_DIR, 'fixtures', 'scss')
 CSS_DIR = os.path.join(ROOT_DIR, 'fixtures', 'css')
 OUTPUT_DIR = os.path.join(ROOT_DIR, 'fixtures', 'output')
